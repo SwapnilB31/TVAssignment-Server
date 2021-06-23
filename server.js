@@ -18,7 +18,6 @@ const listener = app.listen(process.env.PORT,() => {
 app.post('/searchRestaurants',async (req,res) => {
   const {formats, occasions, priceRange, sortBy} = req.fields
   const query = genSearchQuery(formats,occasions,priceRange,sortBy)
-  console.log(query)
   try{
     const result =  await pool.query(query)
     res.status(200).json(result.rows)
